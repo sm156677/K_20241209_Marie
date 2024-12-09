@@ -22,6 +22,17 @@
     </header>
     <main>
         <H1>Kredit beantragen</H1>
+        <p></p>
+        <form>
+            <label>Kreditbetrag</label><br>
+            <input type="number" min="0" value=<%= Kreditbetrag %>><br>
+            <label>Zinssatz</label><br>
+            <input step="0.1" type="number" min="0.0" value=<%= Zinssatz %>><br>
+            <label>Laufzeit</label><br>
+            <input type="number" min="0" value=<%= Laufzeit %>><br>
+            <button type="submit" formaction="/kreditBeantragen">Kredit berechnen</button>
+        </form>
+        <p><%= Meldung %></p>
     </main>
 
     <footer>

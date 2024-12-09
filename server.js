@@ -18,7 +18,7 @@ const bodyParser = require('body-parser');
 // zugewiesen an die Konstante namens PORT. Das einfache Gleichheitszeichen lässt sich also übersetzen
 // mit "... wird zugewiesen an ..."
 
-const PORT = 3000;
+const PORT = 4000;
 
 // Der Wert '0.0.0.0' wird zugewiesen an eine Konstante namens HOST 
 const HOST = '0.0.0.0';
@@ -37,7 +37,42 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 
 // Hier kommt das Kunden(-berater) objekt hin:
+class Kundenberater {
+	constructor() {
+		this.Vorname
+		this.Nachname
+		this.Telefonnummer
+		this.Email
+	}
+}
 
+class Kunde {
+	constructor() {
+		this.Vorname
+		this.Nachname
+		this.Telefonnummer
+		this.Email
+		this.Benutzername
+		this.Kennwort
+	}
+}
+
+let kunde1 = new Kunde();
+kunde1.Vorname="Max",
+	kunde1.Nachname="Meyer",
+	kunde1.Telefonnummer="192745672",
+	kunde1.Email="max.meyer@t-online.de",
+	kunde1.Benutzername="Max Meyer",
+	kunde1.Kennwort="meyer_123"
+;
+	
+	
+let kundenberater1=new Kundenberater(
+	kundenberater1.Vorname="Pit",
+	kundenberater1.Nachname="Kiff",
+	kundenberater1.Telefonnummer="012345/7890000",
+	kundenberater1.Email="p.kiff@borken-bank.de"
+);
 
 
 
@@ -68,7 +103,30 @@ app.get('/postfach', (req, res) => {
 });
 
 app.get('/kreditBeantragen', (req, res) => {
-	res.render('kreditBeantragen.ejs',{});
+	res.render('kreditBeantragen.ejs',{
+		Kreditbetrag:300,
+		Laufzeit:7,
+		Zinssatz:0.1,
+		Meldung:""
+	});
+});
+
+app.post('/kreditBeantragen', (req, res) => {
+	let kreditBetrag = req.body.Kreditbetrag;
+	console.log("kreditBeantragen: Gewünschter Betrag: " + kreditBetrag + " Euro")
+
+	let laufzeit = req.body.Laufzeit;
+	console.log("kreditBeantragen: Gewünschte Laufzeit: " + laufzeit + " Jahre")
+
+	let zinssatz = req.body.Zinssatz;
+
+	let rueckzahlung = betrag * zinssatz;
+
+	res.render('kreditBeantragen.ejs',{
+		Kreditbetrag: kreditBetrag,
+		Laufzeit: laufzeit,
+		Meldung: "Ihr Rückzahlungsbetrag beträgt " + rueckzahlung
+	});
 });
 
 app.get('/ueberweisungAusfuehren', (req, res) => {
@@ -93,6 +151,7 @@ app.get('/geldAnlegen', (req, res) => {
 		Meldung: ""
 	})
 });
+
 
 // Die Funktion app.post('/geldAnlegen...) wird abgearbeitet, wenn der Kunde auf dem Formular den Absenden-Button klickt.
 
@@ -123,7 +182,10 @@ app.get('/login', (req, res) => {
 	res.render('login.ejs',{});
 });
 
-
+//Ich habe die app.get hier hinzugefügt, wodurch das Profil geöffnet werden kann.
+app.get('/profil',(req, res) => {
+	res.render('profil.ejs',{});
+})
 
 // Mit listen() wird der Server angewiesen, auf den angegebenen Host und
 // Port zu lauschen.  
