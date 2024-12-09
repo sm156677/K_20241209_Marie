@@ -58,21 +58,19 @@ class Kunde {
 }
 
 let kunde1 = new Kunde();
-kunde1.Vorname="Max",
-	kunde1.Nachname="Meyer",
-	kunde1.Telefonnummer="192745672",
-	kunde1.Email="max.meyer@t-online.de",
-	kunde1.Benutzername="Max Meyer",
-	kunde1.Kennwort="meyer_123"
-;
+kunde1.Vorname="Max";
+	kunde1.Nachname="Meyer";
+	kunde1.Telefonnummer="192745672";
+	kunde1.Email="max.meyer@t-online.de";
+	kunde1.Benutzername="Max Meyer";
+	kunde1.Kennwort="meyer_123";
 	
 	
-let kundenberater1=new Kundenberater(
-	kundenberater1.Vorname="Pit",
-	kundenberater1.Nachname="Kiff",
-	kundenberater1.Telefonnummer="012345/7890000",
-	kundenberater1.Email="p.kiff@borken-bank.de"
-);
+let kundenberater1=new Kundenberater()
+	kundenberater1.Vorname="Pit";
+	kundenberater1.Nachname="Kiff";
+	kundenberater1.Telefonnummer="012345/7890000";
+	kundenberater1.Email="p.kiff@borken-bank.de";
 
 
 
